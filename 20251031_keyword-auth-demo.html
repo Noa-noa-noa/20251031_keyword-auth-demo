@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Panasonic 体験LP</title>
+<style>
+  body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background: #fff; }
+  header { background: #0072c6; color: #fff; text-align: center; padding: 15px; font-size: 24px; font-weight: bold; }
+  .hero { text-align: center; padding: 20px; }
+  .hero img { max-width: 90%; height: auto; }
+  h2 { text-align: center; font-size: 20px; margin: 20px 0; }
+  .btn-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin: 20px; }
+  .btn-container button {
+    width: 80%; padding: 15px; font-size: 18px; color: #fff; background: #0072c6;
+    border: none; border-radius: 5px; cursor: pointer;
+  }
+  .map-section { text-align: center; margin: 30px 0; }
+  .map-section img { max-width: 90%; height: auto; border: 1px solid #ccc; }
+  #keywordModal {
+    display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: #fff; padding: 20px; border: 2px solid #0072c6; box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 999; width: 80%; max-width: 400px;
+  }
+  #keywordModal input { width: 90%; padding: 10px; margin-bottom: 10px; }
+  #keywordModal button { background: #0072c6; color: #fff; padding: 10px 15px; border: none; cursor: pointer; }
+  #errorMsg { color: red; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>Panasonic</header>
+
+<div class="hero">
+  <img src="https://via.placeholder.com/600x300?text=Panasonic+Product" alt="Panasonic製品2>
+
+<div class="btn-container">
+  https://example.com/product商品情報を見る</button>
+  https://example.com/surveyアンケートに答える</button>
+  <button id="noveltyBtn">店舗でノベルティをGET</button>
+</div>
+
+<div class="map-section">
+  <h3>池袋駅から店舗へのアクセス</h3>
+  <img src="https://via.placeholder.com/600x400?text=Map:+Ikebukuro+%2B+Stores!-- モーダル -->
+<div id="keywordModal">
+  <p>キーワードを入力してください:</p>
+  <input type="text" id="keywordInput" placeholder="キーワードを入力">
+  <button id="submitKeyword">送信</button>
+  <p id="errorMsg"></p>
+</div>
+
+<script>
+document.getElementById("noveltyBtn").addEventListener("click", () => {
+  document.getElementById("keywordModal").style.display = "block";
+});
+
+document.getElementById("submitKeyword").addEventListener("click", () => {
+  const input = document.getElementById("keywordInput").value.trim().toLowerCase();
+
+  // キーワードと遷移先のマッピング
+  const keywordMap = {
+    "panasonic2025": "https://example.com/novelty",
+    "eventsurvey": "https://example.com/special-survey",
+    "storebonus": "https://example.com/store-bonus"
+  };
+
+  if (keywordMap[input]) {
+    window.location.href = keywordMap[input];
+  } else {
+    document.getElementById("errorMsg").textContent = "キーワードが違います";
+  }
+});
+</script>
+
+</body>
+</html>
